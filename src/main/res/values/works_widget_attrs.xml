@@ -1,0 +1,10 @@
+<resources>
+    <declare-styleable name="ConstrainedFrameLayout">
+        <attr name="ratioHorizontal" format="integer"/>
+        <attr name="ratioVertical" format="integer"/>
+        <attr name="keep" format="enum">
+            <enum name="width" value="1"/>
+            <enum name="height" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>
