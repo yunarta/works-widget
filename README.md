@@ -14,13 +14,13 @@ Figure. 1 - Constrained FrameLayout
 Layout examples:
 <code>
 <pre>
-<view
+&lt;view
             class="works.ConstrainedFrameLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             works:ratioHorizontal="integer"
             works:ratioVertical="integer"
-            works:keep="width|height">
+            works:keep="width|height"&gt;
 </pre>
 </code>
 
