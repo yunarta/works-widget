@@ -7,6 +7,7 @@ Android Basic Widget such as
 
 <center>
 ![](screenshot/fig1.png)
+<br/>
 Figure. 1 - Constrained FrameLayout
 </center>
 
