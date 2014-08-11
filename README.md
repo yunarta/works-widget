@@ -1,5 +1,5 @@
-Works Widget - Experimental
-===========
+Works Widget
+============
 
 Android Basic Widget such as
 
