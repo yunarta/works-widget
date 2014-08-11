@@ -59,6 +59,7 @@ public class ConstrainedFrameLayout extends FrameLayout {
                     }
                 }
             }
+            ta.recycle();
         }
     }
 
