@@ -1,8 +1,12 @@
 apply plugin: 'com.android.library'
+apply plugin: 'signing'
 
 repositories {
     mavenCentral()
 }
+
+group 'com.mobilesolutionworks.android'
+version '1.0.3'
 
 android {
     compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
@@ -19,6 +23,73 @@ android {
         release {
             runProguard Boolean.parseBoolean(project.RUN_PROGUARD)
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+def generatePom() {
+    def pom = pom {
+        project {
+            name 'widget'
+            packaging 'aar'
+            groupId project.group
+            artifactId project.name
+            version project.version
+            description 'Works Widget for Android'
+            inceptionYear '2014'
+            url 'http://sg.linkedin.com/in/yunarta/'
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0'
+                    distribution 'repo'
+                }
+            }
+
+            scm {
+                url                 "https://github.com/yunarta/works-widget"
+                connection          "scm:git:git@github.com:yunarta/works-widget.git"
+                developerConnection "scm:git:git@github.com:yunarta/works-widget.git"
+            }
+
+
+            developers {
+                developer {
+                    id 'yunarta'
+                    name 'Yunarta Kartawahyudi'
+                    email 'yunarta.kartawahyudi@gmail.com'
+                    url 'http://sg.linkedin.com/in/yunarta/'
+                    roles {
+                        role 'author'
+                        role 'developer'
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment {
+                MavenDeployment deployment -> signing.signPom(deployment)
+            }
+            pom = generatePom()
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: sonatypeUsername, password: sonatypePassword )
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
+                authentication(userName: sonatypeUsername, password: sonatypePassword )
+            }
         }
     }
 }
