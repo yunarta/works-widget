@@ -5,8 +5,8 @@ repositories {
     mavenCentral()
 }
 
-group 'com.mobilesolutionworks.android'
-version '1.0.3'
+group 'com.mobilesolutionworks'
+version '1.0'
 
 android {
     compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
@@ -30,7 +30,7 @@ android {
 def generatePom() {
     def pom = pom {
         project {
-            name 'widget'
+            name 'works-widget'
             packaging 'aar'
             groupId project.group
             artifactId project.name
@@ -64,6 +64,7 @@ def generatePom() {
                         role 'author'
                         role 'developer'
                     }
+                    timezone '+8'
                 }
             }
         }
@@ -92,4 +93,21 @@ uploadArchives {
             }
         }
     }
+}
+
+// custom tasks for creating source/javadoc jars
+task sourcesJar(type: Jar, dependsOn:classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn:javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+// add javadoc/source jar tasks as artifacts
+artifacts {
+    archives sourcesJar
+    archives javadocJar
 }
