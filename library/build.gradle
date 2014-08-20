@@ -6,7 +6,7 @@ repositories {
 }
 
 group 'com.mobilesolutionworks'
-version '1.0'
+version '1.0.1'
 
 android {
     compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
@@ -15,8 +15,8 @@ android {
     defaultConfig {
         minSdkVersion 1
         targetSdkVersion project.ANDROID_BUILD_TARGET_SDK_VERSION
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.1"
     }
 
     buildTypes {
