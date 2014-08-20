@@ -50,7 +50,7 @@ compile 'com.mobilesolutionworks:works-widget:1.0@aar'
 <dependency>
 	<groupId>com.mobilesolutionworks</groupId>
 	<artifactId>works-widget</artifactId>
-	<version>1.0</version>
+	<version>1.0.1</version>
 	<type>pom</type>
 </dependency>
 ```
