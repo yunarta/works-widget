@@ -56,17 +56,17 @@ public class ConstrainedFrameLayout extends FrameLayout {
             for (int i = 0; i < n; i++) {
                 int attr = ta.getIndex(i);
                 switch (attr) {
-                    case R.styleable.ConstrainedFrameLayout_ratioHorizontal: {
+                    case R.styleable.ConstrainedFrameLayout_worksRatioHorizontal: {
                         ratioHorizontal = ta.getInt(attr, 1);
                         break;
                     }
 
-                    case R.styleable.ConstrainedFrameLayout_ratioVertical: {
+                    case R.styleable.ConstrainedFrameLayout_worksRatioVertical: {
                         ratioVertical = ta.getInt(attr, 1);
                         break;
                     }
 
-                    case R.styleable.ConstrainedFrameLayout_keep: {
+                    case R.styleable.ConstrainedFrameLayout_worksKeep: {
                         keep = ta.getInt(attr, 1);
                         if (keep > 3) {
                             keep = 1;

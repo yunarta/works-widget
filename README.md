@@ -18,9 +18,9 @@ Layout examples:
             class="works.ConstrainedFrameLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            works:ratioHorizontal="integer"
-            works:ratioVertical="integer"
-            works:keep="width|height"&gt;
+            works:worksRatioHorizontal="integer"
+            works:worksRatioVertical="integer"
+            works:worksKeep="width|height"&gt;
 </pre>
 </code>
 

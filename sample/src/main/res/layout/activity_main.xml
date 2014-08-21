@@ -12,9 +12,9 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         class="works.ConstrainedFrameLayout"
-        works:ratioHorizontal="16"
-        works:ratioVertical="9"
-        works:keep="width"
+        works:worksRatioHorizontal="16"
+        works:worksRatioVertical="9"
+        works:worksKeep="width"
         android:background="#00f"
         android:layout_margin="5dp">
 
@@ -30,9 +30,9 @@
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         class="works.ConstrainedFrameLayout"
-        works:ratioHorizontal="3"
-        works:ratioVertical="2"
-        works:keep="height"
+        works:worksRatioHorizontal="3"
+        works:worksRatioVertical="2"
+        works:worksKeep="height"
         android:background="#802000"
         android:layout_margin="5dp">
 
@@ -54,9 +54,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             class="works.ConstrainedFrameLayout"
-            works:ratioHorizontal="1"
-            works:ratioVertical="2"
-            works:keep="width"
+            works:worksRatioHorizontal="1"
+            works:worksRatioVertical="2"
+            works:worksKeep="width"
             android:background="#40a080"
             android:layout_margin="5dp">
 
@@ -72,9 +72,9 @@
 
         <view
             class="works.ConstrainedFrameLayout"
-            works:ratioHorizontal="1"
-            works:ratioVertical="2"
-            works:keep="width"
+            works:worksRatioHorizontal="1"
+            works:worksRatioVertical="2"
+            works:worksKeep="width"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -93,9 +93,9 @@
 
         <view
             class="works.ConstrainedFrameLayout"
-            works:ratioHorizontal="1"
-            works:ratioVertical="2"
-            works:keep="width"
+            works:worksRatioHorizontal="1"
+            works:worksRatioVertical="2"
+            works:worksKeep="width"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -113,9 +113,9 @@
         </view>
         <view
             class="works.ConstrainedFrameLayout"
-            works:ratioHorizontal="1"
-            works:ratioVertical="2"
-            works:keep="width"
+            works:worksRatioHorizontal="1"
+            works:worksRatioVertical="2"
+            works:worksKeep="width"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
