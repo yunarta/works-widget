@@ -17,12 +17,12 @@ Figure. 1 - Constrained FrameLayout
             class="works.ConstrainedFrameLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            works:ratioHorizontal="integer"
-            works:ratioVertical="integer"
-            works:keep="width|height"/>
-``` 
+            works:worksRatioHorizontal="integer"
+            works:worksRatioVertical="integer"
+            works:worksKeep="width|height"/>
+```
 
-This widget is especially useful for handling ImageView dimension. 
+This widget is especially useful for handling ImageView dimension.
 
 ## Usage
 
