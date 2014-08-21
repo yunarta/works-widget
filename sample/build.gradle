@@ -26,9 +26,9 @@ android {
 
     buildTypes {
         release {
-            runProguard false
+            runProguard Boolean.parseBoolean(project.RUN_PROGUARD)
             if (runProguard) {
-                proguardFiles getDefaultProguardFile('proguard-project.txt'), 'proguard-rules.txt'
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             }
         }
     }
