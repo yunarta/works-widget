@@ -106,7 +106,7 @@ uploadArchives {
 }
 
 android.libraryVariants.all { variant ->
-//    if (project.hasProperty('androidSdkDir')) {
+    if (project.hasProperty('androidSdkDir')) {
         def name = variant.buildType.name
         if (name.equals(com.android.builder.core.BuilderConstants.DEBUG)) {
             return;
