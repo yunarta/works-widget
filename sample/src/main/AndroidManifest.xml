@@ -4,7 +4,8 @@
 
     <application
         android:label="Widget Test"
-        android:icon="@drawable/ic_launcher">
+        android:icon="@drawable/ic_launcher"
+        android:theme="@style/ThemeCompat">
         <activity android:name="com.mobilesolutionworks.android.widget.test.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
