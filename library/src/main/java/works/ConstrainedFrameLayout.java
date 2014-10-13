@@ -94,6 +94,6 @@ public class ConstrainedFrameLayout extends FrameLayout {
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
+        setMeasuredDimension(width & MEASURED_SIZE_MASK, height & MEASURED_SIZE_MASK);
     }
 }

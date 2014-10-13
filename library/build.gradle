@@ -6,10 +6,10 @@ repositories {
 }
 
 group 'com.mobilesolutionworks'
-version '1.0.3'
+version '1.0.4'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 20
     buildToolsVersion '20.0.0'
 
     def androidTargetSdkVersion = compileSdkVersion
@@ -17,14 +17,14 @@ android {
     if (project.hasProperty('androidConfiguration')) {
         compileSdkVersion Integer.parseInt(project.androidCompileSdkVersion)
         buildToolsVersion project.androidBuildToolsVersion
-        androidTargetSdkVersion = project.androidTargetSdkVersion
+        androidTargetSdkVersion = Integer.parseInt(project.androidTargetSdkVersion)
     }
 
     defaultConfig {
-        minSdkVersion 1
+        minSdkVersion 8
         targetSdkVersion androidTargetSdkVersion
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 4
+        versionName "1.0.4"
     }
 
     buildTypes {

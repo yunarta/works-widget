@@ -7,4 +7,7 @@
             <enum name="height" value="2"/>
         </attr>
     </declare-styleable>
+    <declare-styleable name="AnimatedImageView">
+        <attr name="worksAnim" format="reference"/>
+    </declare-styleable>
 </resources>

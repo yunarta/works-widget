@@ -5,8 +5,7 @@ repositories {
 }
 
 android {
-
-    compileSdkVersion 19
+    compileSdkVersion 20
     buildToolsVersion '20.0.0'
 
     def androidTargetSdkVersion = compileSdkVersion
@@ -14,7 +13,7 @@ android {
     if (project.hasProperty('androidConfiguration')) {
         compileSdkVersion Integer.parseInt(project.androidCompileSdkVersion)
         buildToolsVersion project.androidBuildToolsVersion
-        androidTargetSdkVersion = project.androidTargetSdkVersion
+        androidTargetSdkVersion = Integer.parseInt(project.androidTargetSdkVersion)
     }
 
     defaultConfig {

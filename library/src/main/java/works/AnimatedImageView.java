@@ -16,48 +16,61 @@
 
 package works;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import com.mobilesolutionworks.android.widget.R;
 
 /**
  * Created by yunarta on 25/8/14.
- *
- * @deprecated use @see works.AnimatedImageView instead
  */
-public class RotatingImageView extends ImageView {
+@TargetApi(Build.VERSION_CODES.FROYO)
+public class AnimatedImageView extends ImageView {
 
-    private RotateAnimation mAnimation;
+    private Animation mAnimation;
 
-    public RotatingImageView(Context context) {
+    public AnimatedImageView(Context context) {
         super(context);
-        init();
+        init(context, null);
     }
 
-    public RotatingImageView(Context context, AttributeSet attrs) {
+    public AnimatedImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(context, attrs);
     }
 
-    public RotatingImageView(Context context, AttributeSet attrs, int defStyle) {
+    public AnimatedImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init();
+        init(context, attrs);
     }
 
-    private void init() {
-        mAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        mAnimation.setDuration(2 * getResources().getInteger(android.R.integer.config_longAnimTime));
-        mAnimation.setInterpolator(new LinearInterpolator());
-        mAnimation.setRepeatMode(Animation.RESTART);
-        mAnimation.setRepeatCount(Animation.INFINITE);
+    private void init(Context context, AttributeSet attrs) {
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AnimatedImageView);
+        if (ta != null) {
+            int n = ta.getIndexCount();
 
-        // onVisibilityChanged(this, getVisibility());
+            for (int i = 0; i < n; i++) {
+                int attr = ta.getIndex(i);
+                switch (attr) {
+                    case R.styleable.AnimatedImageView_worksAnim: {
+                        int id = ta.getResourceId(attr, -1);
+                        if (id != -1) {
+                            mAnimation = AnimationUtils.loadAnimation(context, id);
+                        }
+                        break;
+                    }
+                }
+            }
+            ta.recycle();
+        }
     }
-
 
     @Override
     protected void onWindowVisibilityChanged(int visibility) {
