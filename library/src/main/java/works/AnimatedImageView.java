@@ -58,13 +58,10 @@ public class AnimatedImageView extends ImageView {
 
             for (int i = 0; i < n; i++) {
                 int attr = ta.getIndex(i);
-                switch (attr) {
-                    case R.styleable.AnimatedImageView_worksAnim: {
-                        int id = ta.getResourceId(attr, -1);
-                        if (id != -1) {
-                            mAnimation = AnimationUtils.loadAnimation(context, id);
-                        }
-                        break;
+                if (attr == R.styleable.AnimatedImageView_worksAnim) {
+                    int id = ta.getResourceId(attr, -1);
+                    if (id != -1) {
+                        mAnimation = AnimationUtils.loadAnimation(context, id);
                     }
                 }
             }
