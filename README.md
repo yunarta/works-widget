@@ -29,11 +29,11 @@ This widget is especially useful for handling ImageView dimension.
 ### Adding as dependency
 
 **Manual**
- * [Download AAR](https://github.com/yunarta/works-widget/releases/download/v1.0.1/works-widget-1.0.1.aar)
+ * [Download AAR](https://github.com/yunarta/works-widget/releases/download/v1.0.4/works-widget-1.0.4.aar)
  * Put the AAR in the **libs** subfolder of your Android project
  * If you are using gradle you can use this dependency setting below
 ``` groovy
-compile(name:'works-widget-1.0.1', ext:'aar')
+compile(name:'works-widget-1.0.4', ext:'aar')
 ```
 
 or
@@ -41,7 +41,7 @@ or
 **Gradle dependency**
 
 ``` groovy
-compile 'com.mobilesolutionworks:works-widget:1.0@aar'
+compile 'com.mobilesolutionworks:works-widget:1.0.4@aar'
 ```
 
 **Maven dependency**
@@ -50,7 +50,7 @@ compile 'com.mobilesolutionworks:works-widget:1.0@aar'
 <dependency>
 	<groupId>com.mobilesolutionworks</groupId>
 	<artifactId>works-widget</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.4</version>
 	<type>pom</type>
 </dependency>
 ```
