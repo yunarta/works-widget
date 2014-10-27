@@ -1,23 +1,19 @@
 apply plugin: 'com.android.library'
 apply plugin: 'signing'
 
-repositories {
-    mavenCentral()
-}
-
 group 'com.mobilesolutionworks'
 version '1.0.4'
 
 android {
-    compileSdkVersion 20
-    buildToolsVersion '20.0.0'
+    compileSdkVersion 21
+    buildToolsVersion "21.0.2"
 
     def androidTargetSdkVersion = compileSdkVersion
 
     if (project.hasProperty('androidConfiguration')) {
         compileSdkVersion Integer.parseInt(project.androidCompileSdkVersion)
         buildToolsVersion project.androidBuildToolsVersion
-        androidTargetSdkVersion = Integer.parseInt(project.androidTargetSdkVersion)
+        androidTargetSdkVersion = project.androidTargetSdkVersion
     }
 
     defaultConfig {
@@ -82,7 +78,7 @@ def generatePom() {
 }
 
 signing {
-    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
+    required { has("release") && gradle.taskGraph.hasTask("publishTo") }
     sign configurations.archives
 }
 
