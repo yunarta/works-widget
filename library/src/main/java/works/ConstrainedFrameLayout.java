@@ -53,20 +53,13 @@ public class ConstrainedFrameLayout extends FrameLayout {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ConstrainedFrameLayout);
         if (ta != null) {
             int n = ta.getIndexCount();
-
-            for (int i = 0; i < n; i++) {
-                int attr = ta.getIndex(i);
-                if (attr == R.styleable.ConstrainedFrameLayout_worksRatioHorizontal) {
-                    ratioHorizontal = ta.getInt(attr, 1);
-                } else if (attr == R.styleable.ConstrainedFrameLayout_worksRatioVertical) {
-                    ratioVertical = ta.getInt(attr, 1);
-                } else if (attr == R.styleable.ConstrainedFrameLayout_worksKeep) {
-                    keep = ta.getInt(attr, 1);
-                    if (keep > 3) {
-                        keep = 1;
-                    }
-                }
+            ratioHorizontal = ta.getInt(R.styleable.ConstrainedFrameLayout_worksRatioHorizontal, 1);
+            ratioVertical = ta.getInt(R.styleable.ConstrainedFrameLayout_worksRatioVertical, 1);
+            keep = ta.getInt(R.styleable.ConstrainedFrameLayout_worksKeep, 1);
+            if (keep > 3) {
+                keep = 1;
             }
+
             ta.recycle();
         }
     }

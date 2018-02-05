@@ -1,34 +1,25 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
-
-    def androidTargetSdkVersion = compileSdkVersion
-
-    if (project.hasProperty('androidConfiguration')) {
-        compileSdkVersion Integer.parseInt(project.androidCompileSdkVersion)
-        buildToolsVersion project.androidBuildToolsVersion
-        androidTargetSdkVersion = project.androidTargetSdkVersion
-    }
+    compileSdkVersion 27
 
     defaultConfig {
-        minSdkVersion 10
-        targetSdkVersion androidTargetSdkVersion
+        minSdkVersion 14
+        targetSdkVersion 27
+
         versionCode 1
         versionName "1.0"
     }
 
     buildTypes {
         release {
-//            runProguard false
-//            if (runProguard) {
-//                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-//            }
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
-    compile project(":works-widget")
+    implementation 'com.android.support:support-v4:27.0.2'
+    implementation project(":works-widget")
 }

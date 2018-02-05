@@ -1,4 +1,25 @@
-include ':library'
-include ':sample'
+def moduleName = "works-widget"
+def moduleRoot = rootProject.projectDir
+def loadSmallApp = true
 
-project(":library").name = "works-widget"
+def modulesFile = new File(rootProject.projectDir, "modules.json")
+if (modulesFile.exists()) {
+    def json = new groovy.json.JsonSlurper()
+    def configuration = json.parse(modulesFile)
+
+    configuration.modules.each {
+        module ->
+            if (module.name.equals(moduleName)) {
+                moduleRoot = new File(rootProject.projectDir, module.path)
+                loadSmallApp = module.smallapp == null || module.smallapp
+            }
+    }
+}
+
+include ':works-widget'
+project(':works-widget').projectDir = new File(moduleRoot, 'library')
+
+if (loadSmallApp) {
+    include ':works-widget-sample'
+    project(':works-widget-sample').projectDir = new File(moduleRoot, 'sample')
+}
