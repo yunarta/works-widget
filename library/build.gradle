@@ -1,7 +1,86 @@
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+apply plugin: 'maven-publish'
 apply plugin: 'com.android.library'
 
 group 'com.mobilesolutionworks'
-version '1.0.4'
+version '1.0.5'
+
+// Create the publication with the pom configuration:
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            pom.withXml {
+                // Iterate over the implementation dependencies (we don't want the test ones), adding a <dependency> node for each
+                configurations.implementation.allDependencies.each {
+                    // Ensure dependencies such as fileTree are not included.
+                    if (it.name != 'unspecified') {
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', it.group)
+                        dependencyNode.appendNode('artifactId', it.name)
+                        dependencyNode.appendNode('version', it.version)
+                    }
+                }
+            }
+
+            groupId project.group
+            artifactId project.name
+            version project.version
+        }
+    }
+}
+
+bintray {
+    user = project.properties.getOrDefault('jcenterUser', '')
+    key = project.properties.getOrDefault('jcenterKey', '')
+
+    pkg {
+        repo = 'maven'
+        name = 'com.mobilesolutionworks'
+        userOrg = System.getenv('BINTRAY_USER')
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/yunarta/works-widget.git'
+
+        version {
+            name = project.version
+            desc = 'Works Widget for Android'
+            released = new Date()
+            vcsTag = "v" + project.version
+            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
+    }
+}
+// Create the pom configuration:
+def pomConfig = {
+    licenses {
+        license {
+            name 'The Apache Software License, Version 2.0'
+            url 'http://www.apache.org/licenses/LICENSE-2.0'
+            distribution 'maven'
+        }
+    }
+
+    developers {
+        developer {
+            id 'yunarta-kartawahyudi'
+            name 'Yunarta Kartawahyudi'
+            email 'yunarta.kartawahyudi@gmail.com'
+            url 'http://sg.linkedin.com/in/yunarta/'
+            roles {
+                role 'author'
+                role 'developer'
+            }
+            timezone '+8'
+        }
+    }
+
+    scm {
+        url "https://github.com/yunarta/works-widget"
+        connection "scm:git:git@github.com:yunarta/works-widget.git"
+        developerConnection "scm:git:git@github.com:yunarta/works-widget.git"
+    }
+}
 
 android {
     compileSdkVersion 27
@@ -21,5 +100,3 @@ android {
         }
     }
 }
-
-apply from: "publish.gradle"
