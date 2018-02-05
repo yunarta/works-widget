@@ -4,15 +4,14 @@ group 'com.mobilesolutionworks'
 version '1.0.4'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 27
 
     defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 19
+        minSdkVersion 14
+        targetSdkVersion 27
 
         versionCode 4
-        versionName "1.0.4"
+        versionName "1.0.5"
     }
 
     buildTypes {
@@ -22,3 +21,5 @@ android {
         }
     }
 }
+
+apply from: "publish.gradle"
