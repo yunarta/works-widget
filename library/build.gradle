@@ -10,7 +10,12 @@ version '1.0.5'
 // Create the publication with the pom configuration:
 publishing {
     publications {
-        MyPublication(MavenPublication) {
+        Production(MavenPublication) {
+            artifact("$buildDir/outputs/aar/works-widget-release.aar")
+            groupId
+            artifactId project.name
+            version this.version
+
             pom.withXml {
                 // Iterate over the implementation dependencies (we don't want the test ones), adding a <dependency> node for each
                 configurations.implementation.allDependencies.each {
@@ -23,10 +28,6 @@ publishing {
                     }
                 }
             }
-
-            groupId project.group
-            artifactId project.name
-            version project.version
         }
     }
 }
@@ -37,10 +38,13 @@ bintray {
 
     pkg {
         repo = 'maven'
-        name = 'com.mobilesolutionworks'
+        name = 'com.mobilesolutionworks:' + project.name
         userOrg = System.getenv('BINTRAY_USER')
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/yunarta/works-widget.git'
+        publish = true
+        publicDownloadNumbers = true
+        publications = ['Production']
 
         version {
             name = project.version
@@ -51,36 +55,8 @@ bintray {
         }
     }
 }
-// Create the pom configuration:
-def pomConfig = {
-    licenses {
-        license {
-            name 'The Apache Software License, Version 2.0'
-            url 'http://www.apache.org/licenses/LICENSE-2.0'
-            distribution 'maven'
-        }
-    }
 
-    developers {
-        developer {
-            id 'yunarta-kartawahyudi'
-            name 'Yunarta Kartawahyudi'
-            email 'yunarta.kartawahyudi@gmail.com'
-            url 'http://sg.linkedin.com/in/yunarta/'
-            roles {
-                role 'author'
-                role 'developer'
-            }
-            timezone '+8'
-        }
-    }
 
-    scm {
-        url "https://github.com/yunarta/works-widget"
-        connection "scm:git:git@github.com:yunarta/works-widget.git"
-        developerConnection "scm:git:git@github.com:yunarta/works-widget.git"
-    }
-}
 
 android {
     compileSdkVersion 27
